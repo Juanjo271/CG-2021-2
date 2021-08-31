@@ -11,7 +11,12 @@
 </head>
 
 <body>
-  <div id="backBtn">Volver</div>
+  <div id="renderScene">
+    <div id="backBtn">Return</div>
+    <div id="createCubeBtn">Create Cube</div>
+    <!-- <div id="createSphereBtn">Create Sphere</div>
+    <div id="createLightBtn">Create Light</div> -->
+  </div>
   <div id="content">
     <div class="btnOption small" data-size="10">
       <div class="title">Small</div>
@@ -35,11 +40,12 @@
     </div> -->
   </div>
   <script type="module">
-    import { main } from './src/app.js';
+    import { main, reset, cleanGUI, createCubeGeneric } from './src/app.js';
 
     const options = document.querySelectorAll('.btnOption');
     const content = document.querySelector('#content');
     const backBtn = document.querySelector('#backBtn');
+    const createCubeBtn = document.querySelector('#createCubeBtn');
     let size = 10;
 
     options.forEach(optionSelected => {
@@ -53,6 +59,12 @@
 
     backBtn.onclick = function(){
       toogleContent();
+      cleanGUI();
+      reset();
+    }
+    
+    createCubeBtn.onclick = function(){
+      createCubeGeneric();
     }
 
     function toogleContent (){
